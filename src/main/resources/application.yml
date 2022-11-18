@@ -35,7 +35,7 @@ springdoc:
   version: v1.0.0
   packages-to-scan: indi.gradle.spring.study.apis.test
   swagger-ui:
-    path:  /api-docs
+    path: /api-docs
     tags-sorter: alpha
     operations-sorter: alpha
   api-docs:
