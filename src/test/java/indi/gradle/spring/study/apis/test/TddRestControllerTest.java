@@ -2,7 +2,6 @@ package indi.gradle.spring.study.apis.test;
 
 import com.google.gson.Gson;
 import indi.gradle.spring.study.commons.exceptions.CustomException;
-import indi.gradle.spring.study.commons.exceptions.TestException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -19,11 +18,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 // 통합테스트시 사용. 무거워짐
 //@SpringBootTest(
@@ -53,7 +51,7 @@ class TddRestControllerTest{
         @Autowired
         MockMvc mockMvc;
 
-        @Test
+        @Test           // 이부분은 기본 로직들 무조건 통과하게끔하는 테스트
         @WithMockUser   // spring security 통과용. org.springframework.security:spring-security-test 필요
         public void getMethodTest() throws Exception {
 
@@ -92,25 +90,20 @@ class TddRestControllerTest{
 
                 log.info("#### END : MOCK MVC TEST ####");
 
+        }
 
+        @Test           // 예상한 익셉션 발생하는지 테스트
+        public void exceptioonTest() throws Exception {
                 log.info("#### START : ASSERTIONS ####");
-                CustomException exception = Assertions.assertThrows(CustomException.class, ()->{
+
+                Exception exception = Assertions.assertThrows(Exception.class, ()->{
                         TddRestController controller = new TddRestController();
                         controller.exceptionTest(-1);
                         log.info("###### assertThrows");
                 });
-
                 // 예상한 오류 문자열 아니면 찍어냄
-                assertEquals("#### CUSTOM EXCEPTION #####", exception.getMessage());
-
-                TestException exception2 = Assertions.assertThrows(TestException.class, ()->{
-                        TddRestController controller = new TddRestController();
-                        controller.exceptionTest(1);
-                        log.info("###### assertThrows");
-                });
-
-                // 예상한 오류 문자열 아니면 찍어냄
-                assertEquals("#### CUSTOM EXCEPTION #####", exception2.getMessage());
+//                assertEquals(CustomException.class, exception.getClass());
+                assertThat(CustomException.class).isEqualTo(exception.getClass());
 
                 log.info("#### END : ASSERTIONS ####");
         }

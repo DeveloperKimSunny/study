@@ -40,12 +40,14 @@ public class TddRestController {
         return ResponseEntity.ok(params);
     }
 
-//    @GetMapping("exception-tests")
-    public void exceptionTest(@RequestParam int intVal) throws Exception {
+    @GetMapping("exception-tests")
+    public Map exceptionTest(@RequestParam(name = "intVal") int intVal) throws Exception {
         if(intVal < 0){
             throw new CustomException();
-        }else{
+        }else if(intVal > 0){
             throw new TestException();
+        }else{
+            return new HashMap();
         }
     }
 
