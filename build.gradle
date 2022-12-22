@@ -27,7 +27,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     // json Lib
-    // jackson 가벼운 무거운 json일경우 유리
+    // jackson 무거운 json일경우 유리
 //    implementation 'com.fasterxml.jackson.core:jackson-databind'
     // gson, jsonObject 가벼운 json일경우 유리
     implementation 'com.google.code.gson:gson'
@@ -35,6 +35,9 @@ dependencies {
     // springdoc openapi(swagger) springfox는 최근 구축시 잘 안쓰임
     // https://wildeveloperetrain.tistory.com/156
     implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
+
+    // jwt 웹토큰
+    implementation 'io.jsonwebtoken:jjwt:0.9.1'
 
     // lombok
     compileOnly 'org.projectlombok:lombok'

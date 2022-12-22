@@ -46,3 +46,9 @@ springdoc:
     disabled: true
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
+#   jwttoken 발급을위한 secret-key, 토큰 허용시간
+security:
+  jwt:
+    token:
+      secret-key: studydev111
+      expire-length: 3600000  # milli seconds
