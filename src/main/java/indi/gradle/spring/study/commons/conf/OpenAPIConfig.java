@@ -29,7 +29,6 @@ public class OpenAPIConfig {
                         )
                 )
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
-                .info(info)
-                ;
+                .info(info);
     }
 }
