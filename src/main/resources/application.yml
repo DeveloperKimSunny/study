@@ -33,7 +33,7 @@ spring:
 #      enabled: true
 springdoc:
   version: v1.0.0
-  packages-to-scan: indi.gradle.spring.study.apis.test
+  packages-to-scan: indi.gradle.spring.study
   swagger-ui:
     path: /api-docs
     tags-sorter: alpha
