@@ -1,4 +1,4 @@
-package indi.gradle.spring.study.apis.test;
+package indi.gradle.spring.study.test;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

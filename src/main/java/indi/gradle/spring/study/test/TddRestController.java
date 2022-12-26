@@ -1,4 +1,4 @@
-package indi.gradle.spring.study.apis.test;
+package indi.gradle.spring.study.test;
 
 import indi.gradle.spring.study.commons.exceptions.CustomException;
 import indi.gradle.spring.study.commons.exceptions.TestException;

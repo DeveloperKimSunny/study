@@ -2,6 +2,7 @@ package indi.gradle.spring.study.apis.test;
 
 import com.google.gson.Gson;
 import indi.gradle.spring.study.commons.exceptions.CustomException;
+import indi.gradle.spring.study.test.TddRestController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
