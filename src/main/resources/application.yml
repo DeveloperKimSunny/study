@@ -52,3 +52,13 @@ security:
     token:
       secret-key: studydev111
       expire-length: 3600000  # milli seconds
+#   logback 설정. 추후 yml파일 분리
+logging:
+  pattern:
+    console: "[%d{HH:mm:ss.SSS}][%-5level][%logger.%method:line%line] - %msg%n"
+  level:
+    root: info
+    indi:
+      gradle:
+        spring:
+          study: DEBUG
