@@ -1,6 +1,7 @@
 package indi.gradle.spring.study.test;
 
 import indi.gradle.spring.study.commons.exceptions.CustomException;
+import indi.gradle.spring.study.commons.exceptions.CustomExceptionErrorCode;
 import indi.gradle.spring.study.commons.exceptions.TestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,8 @@ public class TddRestController {
     @GetMapping("exception-tests")
     public Map exceptionTest(@RequestParam(name = "intVal") int intVal) throws Exception {
         if(intVal < 0){
-            throw new CustomException();
+//            throw new CustomException();
+            throw  new CustomException(CustomExceptionErrorCode.SUCCESS);
         }else if(intVal > 0){
             throw new TestException();
         }else{
