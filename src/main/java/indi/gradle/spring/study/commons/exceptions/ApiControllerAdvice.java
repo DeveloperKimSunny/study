@@ -21,6 +21,8 @@ public class ApiControllerAdvice {
         MediaType mediaType = new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8);
         httpHeaders.setContentType(mediaType);
 
+        t.printStackTrace();
+
         return ApiExceptionResponse.builder()
                 .status(HttpStatus.FORBIDDEN)
                 .statusCode(HttpStatus.FORBIDDEN.value())
@@ -30,6 +32,7 @@ public class ApiControllerAdvice {
     }
 
     // 예측 가능한 익셉션 발생시 리턴
+    // 오류로그는 따로 안뽑아줌.
     @ExceptionHandler(CustomException.class)
     public ApiExceptionResponse customExceptionHandler(HttpServletRequest req, CustomException ex){
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -38,7 +41,7 @@ public class ApiControllerAdvice {
 
         return ApiExceptionResponse.builder()
                 .status(ex.getCustomExceptionErrorCode().getStatus())
-                .statusCode(ex.getCustomExceptionErrorCode().getStatus().value())
+                .statusCode(ex.getCustomExceptionErrorCode().getCode())
                 .message(ex.getCustomExceptionErrorCode().getMessage())
                 .url(req.getRequestURI())
                 .build();

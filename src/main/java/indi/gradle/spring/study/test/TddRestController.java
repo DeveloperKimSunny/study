@@ -44,8 +44,7 @@ public class TddRestController {
     @GetMapping("exception-tests")
     public Map exceptionTest(@RequestParam(name = "intVal") int intVal) throws Exception {
         if(intVal < 0){
-//            throw new CustomException();
-            throw  new CustomException(CustomExceptionErrorCode.SUCCESS);
+            throw  new CustomException(CustomExceptionErrorCode.NOT_SUPPORTED_HTTP_METHOD);
         }else if(intVal > 0){
             throw new TestException();
         }else{

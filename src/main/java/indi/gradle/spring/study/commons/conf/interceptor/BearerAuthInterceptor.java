@@ -1,6 +1,8 @@
 package indi.gradle.spring.study.commons.conf.interceptor;
 
 import indi.gradle.spring.study.apis.login.dto.LoginDto;
+import indi.gradle.spring.study.commons.exceptions.CustomException;
+import indi.gradle.spring.study.commons.exceptions.CustomExceptionErrorCode;
 import indi.gradle.spring.study.commons.utils.jwt.AuthorizationExtractor;
 import indi.gradle.spring.study.commons.utils.jwt.JwtTokenProvider;
 import lombok.NoArgsConstructor;
@@ -27,12 +29,11 @@ public class BearerAuthInterceptor implements HandlerInterceptor {
         String token = authorizationExtractor.extract(request, "Bearer");
 
         if(token.isEmpty()){
-//            throw new TokenEmptyException();
-            throw new IllegalArgumentException("토큰값을 던져주세요");
+            throw new CustomException(CustomExceptionErrorCode.EMPTY_JWT_TOKEN);
         }
 
         if(!jwtTokenProvider.validateToken(token)){
-            throw new IllegalArgumentException("유효하지 않은 토큰");
+            throw new CustomException(CustomExceptionErrorCode.UNAUTHORIZED_JWT_TOKEN);
         }
 
 //        LoginDto loginDto = (LoginDto) jwtTokenProvider.getTknValue(token, "userInfo");

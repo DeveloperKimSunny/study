@@ -40,9 +40,9 @@ public class LoginController {
         rtnMap.put("accessTkn", tknStr);
         rtnMap.put("tknSubject", tknValue);
 
-        int i = 0/0;
+//        int i = 0/0;
 //
 //        return ResponseEntity.ok(rtnMap);
-        throw new CustomException(CustomExceptionErrorCode.SUCCESS);
+        throw new CustomException(CustomExceptionErrorCode.NOT_SUPPORTED_HTTP_METHOD);
     }
 }

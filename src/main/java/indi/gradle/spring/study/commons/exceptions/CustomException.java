@@ -10,7 +10,7 @@ public class CustomException extends RuntimeException{
 
     public CustomException(){
 //        super("#### CUSTOM EXCEPTION #####");
-        new CustomException(CustomExceptionErrorCode.SUCCESS);
+//        new CustomException(CustomExceptionErrorCode.SUCCESS);
     }
 
     public CustomException(CustomExceptionErrorCode errorCode){
