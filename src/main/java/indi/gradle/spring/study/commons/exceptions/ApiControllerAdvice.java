@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import javax.servlet.http.HttpServletRequest;
 import java.nio.charset.StandardCharsets;
 
-@RestControllerAdvice
 @Slf4j
+@RestControllerAdvice
 public class ApiControllerAdvice {
 
     // 예측 불가능한 익셉션 발생시 리턴
@@ -21,7 +21,7 @@ public class ApiControllerAdvice {
         MediaType mediaType = new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8);
         httpHeaders.setContentType(mediaType);
 
-        t.printStackTrace();
+        log.error("[defaultException] : ", t);
 
         return ApiExceptionResponse.builder()
                 .status(HttpStatus.FORBIDDEN)
@@ -38,6 +38,8 @@ public class ApiControllerAdvice {
         HttpHeaders httpHeaders = new HttpHeaders();
         MediaType mediaType = new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8);
         httpHeaders.setContentType(mediaType);
+
+        log.error("[handleCustomException] {} : {}", ex.getCustomExceptionErrorCode().name(), ex.getCustomExceptionErrorCode().getMessage());
 
         return ApiExceptionResponse.builder()
                 .status(ex.getCustomExceptionErrorCode().getStatus())
